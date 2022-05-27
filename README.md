@@ -83,4 +83,8 @@ The effect of dropout after first layer is negative: accuracy decreases for the 
 Longer training of NN (epochs = 400) led to overfitting: accuracy has dropped from 0.694 down to 0.588.
 <img src="accuracy.nn_50_d0_50_ml0_e200_400.epochs.png"/>
 
+The highest accuracy was achieved by adding manually labeled images and re-training the model with these data added to the MNIST database. The more data added, the higher the accuracy is. However, there is no difference in accuracy between 400 and 600 manual labels added, since all 200 additional labels were generated during testing of lower-accuracy models, and not the model with 400 manual labels. The number of added labeled images is indicated in the legend following the ‘ml’. Same situation with no useful labels added to 800 manual labels among extra 200 labels leads to a slight degradation in accuracy, which drops from 0.966 for 800 manual labels down to 0.934 (after 500 trials).
+
+<img src="accuracy.nn_50_d0_50_ml0_200-1200.retraining.png"/>
+
 <img src="?"/>
