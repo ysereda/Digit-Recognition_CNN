@@ -73,6 +73,10 @@ The following <b>hyperparameters</b> were optimized:
 * epochs,
 * $m$ - number of manually labeled images added to training data.
 
-Testing a few values of $n_{2}$ shows that the optimal number of neurons in layer 2 is between 25 and 75, unless there are several maxima in accuracy.
+Testing a few values of $n_{2}$ using GUI shows that the optimal number of neurons in layer 2 is between 25 and 75, unless there are several maxima in accuracy.
 <img src="accuracyH.nn_50_d0_50_ml0_e200.neurons.png"/>
 
+The effect of dropout after first layer is negative: accuracy decreases for the three tested values dropout = {0.2, 0.5, 0.8}.
+<img src="?"/>
+
+<img src="?"/>
