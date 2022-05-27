@@ -16,7 +16,7 @@ Neural networks were scored in three ways:
 User feedback is enabled via a tkinter <b>GUI</b> created here and allowing user to draw a digit using mouse, see its neural network model-generated classification as one of the digits, allow specifying a correct label in case it is misclassified, save the misclassified image and its label for model re-training, and keep track of prediction accuracy. The GUI is implemented using Tkinter library that comes in the Python standard library. The App class is responsible for building the GUI for our app. It has a canvas where one can draw by capturing the mouse event. Functions are triggered by pushing control buttons: button 'Clear' clears canvas and button 'Recognise' activates the function predict_digit() to recognize the digit. This function takes the image as input and then uses the trained model to predict the digit. The predicted label and its probability percentage are displayed.
 #### Instructions for GUI:
 1. Start by drawing a digit in the canvas window (60 x 60 pixels).
-<img src="K_WCSS.png"/>
+<img src="gui1.png"/>
 
 2. 
 ## Results
