@@ -28,5 +28,37 @@ User feedback is enabled via a tkinter <b>GUI</b> created here and allowing user
 
 6. Press "Save corrections" button to save manually labelled images and labels, and clean memory.
 7. Current accuracy % of recognizing hand-written digits is displayed on the bottom right.
+
+## Neural Network models
+### Sequential NN model
+<b>Hyperparameters</b> of the sequential NN model were varied around the following reference values.
+| Layer | Neurons | Activation | dropout |
+| ----- | ------- | ---------- | ------- |
+| Dense | 50 | ReLU | <b>0</b> |
+| Dense | <b>50</b> | ReLU | 0 |
+| Dense | 10 | softmax | - |
+
+Varied hyperparameters are in bold. The model was <b>compiled</b> with the Adam <b>optimizer</b> and 'categorical_crossentropy' <b>loss function</b>. Reference value of a training parameter: epochs = 200. Minimal number of trials in recognizing the handwritten images was 200, often used value was 500, and the maximal one was 1150.
+
+### Convolutional Neural Networks (CNN)
+A CNN model generally consists of convolutional and pooling layers. It works better for data that are represented as grid structures, - this is the reason why CNN works well for image classification problems. One image is distinguishable from another by its spatial structure. Areas close to each other are highly significant for an image.
+  The dropout layer is used to deactivate some of the neurons and while training, it reduces overfitting of the model. It randomly kills each neuron in layer of a training set with probability $p$, typically 0.5 (half of the neurons in a layer are dropped during the training). Therefore, the network cannot rely on activation of any set of hidden units, since they may be turned off at any time during training, and the model is forced to learn more general and more robust patterns from the data. We do not use dropout during validation of the data.
+  <b>Convolution layers</b> use a <b>kernel</b> (filter, or matrix), usually 3 x 3 or 5 x 5. Center element of the kernel is placed over the source pixel. The source pixel is then replaced with the sum of elementwise products in the kernel and corresponding nearby source pixels. Convolving the kernel over the image in all possible ways gives 2D <b>activation map</b>. Convolving decreases the spatial size.
+
+<b><i>Max Pooling</i>:</b> Keep only a maximal value from each block, e.g., 2 x 2.
+<b>Hyperparameters</b> of the sequential CNN model were varied around the following reference values.
+
+| Layer | Neurons | Activation | kernel_size <br>/ pool_size | dropout |
+| ----- | ------- | ---------- | ----- | --- |
+| Conv2D | 32 | ReLU | 3, 3 | 0 |
+
+Conv2D 64 ReLU 3, 3 -
+MaxPooling2D - - 2, 2 -
+Dropout - - - 0.25
+Flatten - - - -
+Dense 256 ReLU - -
+Dropout 256 ReLU - 0.5
+Dense 10 softmax - -
+
 ## Results
 The recognition of handwritten digits was tested by applying the model to 10,000 test images and in the actual test by handwriting the digits in the GUI window. We iterated over the digits from 0 to 9 until accuracy curve has reduced its fluctuations. During the development of GUI, 78 misclassified digits were encountered, which were not saved. After implementing the user feedback in the GUI, all misclassified images and their correct labels were saved in two CSV files (all [images](images.csv) in one file and all [labels](labels.csv) in a separate file).
