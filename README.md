@@ -77,6 +77,6 @@ Testing a few values of $n_{2}$ using GUI shows that the optimal number of neuro
 <img src="accuracyH.nn_50_d0_50_ml0_e200.neurons.png"/>
 
 The effect of dropout after first layer is negative: accuracy decreases for the three tested values dropout = {0.2, 0.5, 0.8}.
-<img src="?"/>
+<img src="accuracy.nn_50_50_ml0_e200.dropout.png"/>
 
 <img src="?"/>
