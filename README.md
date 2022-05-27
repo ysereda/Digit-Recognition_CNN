@@ -18,5 +18,15 @@ User feedback is enabled via a tkinter <b>GUI</b> created here and allowing user
 1. Start by drawing a digit in the canvas window (60 x 60 pixels).
 <img src="gui1.png"/>
 
-2. 
+2. Press “Recognise” and see the predicted class and its probability.
+<img src="gui2.png"/>
+
+3. If classified correctly, press “Clear” and go to Step 1.
+4. Otherwise, if the handwritten digit is misclassified, press "Fix" button to add the image to train set, which will be concatenated with the MNIST data before next training cycle.
+5. Type in correct label and press "Get label" button to add the label to train set.
+<img src="gui4_label.png"/>
+
+6. Press "Save corrections" button to save manually labelled images and labels, and clean memory.
+7. Current accuracy % of recognizing hand-written digits is displayed on the bottom right.
 ## Results
+The recognition of handwritten digits was tested by applying the model to 10,000 test images and in the actual test by handwriting the digits in the GUI window. We iterated over the digits from 0 to 9 until accuracy curve has reduced its fluctuations. During the development of GUI, 78 misclassified digits were encountered, which were not saved. After implementing the user feedback in the GUI, all misclassified images and their correct labels were saved in two CSV files (all [images](images.csv) in one file and all [labels](labels.csv) in a separate file).
