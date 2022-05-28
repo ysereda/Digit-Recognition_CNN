@@ -108,7 +108,7 @@ Accuracy of the CNN models was also tested using 28000 [Kaggle test images](http
 
 <img src="accuracy_kaggle.cnn_48_96_d0.25_48_ml1600_kl42000.epochs.png"/>
 
-The highest accuracy is 0.999286, achieved using 26 training epochs. This means 20 misclassified images out of total 28000.
+The highest accuracy is 0.999286, achieved using 26 training epochs. This means 20 misclassified images out of total 28000. The loss function is categorical crossentropy, and the optimizer is Adam.
 
 ## Conclusions
 1. It is well worth saving misclassified digit images and their correct labels for re-training of the model. This can be seen from the following table of accuracy of handwritten digit recognition after 500 trials.
