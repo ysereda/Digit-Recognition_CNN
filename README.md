@@ -98,6 +98,38 @@ Training CNN model longer (400 epochs) did not lead to a change in accuracy of r
 
   When testing optimizers, it was found that ‘Adam’ gives much higher accuracy of 0.83 than ‘Adadelta’ with the accuracy of 0.55. Other optimizers have accuracy values between the above two, except for ‘Ftrl’ optimizer, which could not train within 200 epochs and always predicted digit 1, and thus had an accuracy of 0.1.
 <img src="accuracy.cnn_32_64_d0.25_ml0_e200.optimizer.png"/>
+<img src="cm.cnn_cce_Adam_32_64_d0.25.ml0.e200.png"/>
 
+## Conclusions
+1. It is well worth saving misclassified digit images and their correct labels for re-training of the model. This can be seen from the following table of accuracy of handwritten digit recognition after 500 trials.
 
-<img src="?"/>
+| Manual labels | Accuracy |
+| --- | --- |
+| 0 | 0.694 |
+| 200 | 0.836 |
+| 400 | 0.924 |
+| 600 | 0.924 |
+| <b>800 | 0.966</b> |
+| 1000 | 0.934 |
+
+<b>Recommendation 1:</b> Start from the saved model with the best accuracy, test your handwritten digit recognition using GUI, provide correct label for each misclassified image and save these images and labels using GUI. Re-train the model with the added manually labelled images. Repeat the above steps of testing and adding manual labels until performance no longer improves.
+
+2. After adding 200 manually labeled images, test accuracy has slightly decreased (from 0.9752 to 0.9741), while the actual performance of digit recognition of the images drawn in the GUI window has strongly increased. Thus, training accuracy is not a reliable metric of actual performance.
+3. NN model is prone to overfitting: the accuracy for 400 training epochs is significantly 
+lower than for 200 epochs when not using manual labels.
+
+<b>Recommendation 2:</b> Keep the number of epochs below 400 in NN model.
+
+4. Accuracy is sensitive to the number of neurons in the 2nd layer: 50 neurons have a higher accuracy of 0.694 (after 500 trials) compared to 25 neurons with accuracy of 0.59 and 75 neurons with accuracy of 0.57 (after 200 trials). If there is one maximum of accuracy versus the number of neurons, then we have localized the lower and upper boundary for this hyperparameter.
+5. Dropout between the first two layers of NN model lowers the accuracy.
+
+<b>Recommendation 3:</b> Avoid using dropout after the first layer in NN model.
+<b>Recommendation 4:</b> First focus on hyperparameters of NN model, which is much faster to train than CNN model. However, keep training the CNN models in the background.
+<b>Recommendation 5:</b> When adding more manual labels, generate them using the model that is being upgraded, and not some other lower-accuracy model.
+ 
+ ## Future Directions
+* Compare the accuracy of recognition of original hand writer whose manual labels were used to re-train the NN model to the accuracy values for another user with the same models.
+* Narrow down the optimal ranges of all hyperparameters within current NN and CNN configurations, including number of neurons in each hidden layer and dropout rates after each layer, loss function, optimizer, and activation functions.
+* Test different numbers of layers.
+* Minimize the number of control buttons in the GUI to simplify and speed up the process of dealing with misclassified digits. For instance, try to implement input of correct label via hitting Enter key, which would allow one to eliminate the button 'Get label'.
+* Enable creation of new classes for letter symbols. This would require switching from integer to string variables for the labels.
