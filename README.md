@@ -119,7 +119,7 @@ The highest accuracy is 0.999286, achieved using 26 training epochs. This means 
 | 200 | 0.836 |
 | 400 | 0.924 |
 | 600 | 0.924 |
-| <b>800 | 0.966</b> |
+| <b>800 | <b>0.966 |
 | 1000 | 0.934 |
 
 <b>Recommendation 1:</b> Start from the saved model with the best accuracy, test your handwritten digit recognition using GUI, provide correct label for each misclassified image and save these images and labels using GUI. Re-train the model with the added manually labelled images. Repeat the above steps of testing and adding manual labels until performance no longer improves.
