@@ -90,10 +90,14 @@ The highest accuracy was achieved by adding manually labeled images and re-train
 
 ### CNN models
 Training CNN model longer (400 epochs) did not lead to a change in accuracy of recognizing images hand-written in the GUI, which stayed at 0.55 (after 200 trials).
+
 <img src="accuracy.cnn_32_64_d0.25_ml0_e200_400.training.png"/>
 
   Different loss functions were tested, including user-defined mean absolute error function. Some improvement in accuracy was achieved, as measured after 200 trials. The ranking of the loss functions together with corresponding accuracies is: ‘categorical_crossentropy’ (0.55), ‘mean_absolute_error’ (0.585), and ‘mean_squared_error’ (0.62).
 <img src="accuracy.cnn_32_64_d0.25_ml0_e200.loss.png"/>
 
-  
+  When testing optimizers, it was found that ‘Adam’ gives much higher accuracy of 0.83 than ‘Adadelta’ with the accuracy of 0.55. Other optimizers have accuracy values between the above two, except for ‘Ftrl’ optimizer, which could not train within 200 epochs and always predicted digit 1, and thus had an accuracy of 0.1.
+<img src="accuracy.cnn_32_64_d0.25_ml0_e200.optimizer.png"/>
+
+
 <img src="?"/>
