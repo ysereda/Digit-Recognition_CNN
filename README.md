@@ -50,15 +50,15 @@ The CNN models were <b>compiled</b> with the Adam optimizer as a benchmark. Refe
 User feedback is enabled via a tkinter <b>GUI</b> created here and allowing user to draw a digit using mouse, see its neural network model-generated classification as one of the digits, allow specifying a correct label in case it is misclassified, save the misclassified image and its label for model re-training, and keep track of prediction accuracy. The GUI is implemented using Tkinter library that comes in the Python standard library. The App class is responsible for building the GUI for our app. It has a canvas where one can draw by capturing the mouse event. Functions are triggered by pushing control buttons: button 'Clear' clears canvas and button 'Recognise' activates the function predict_digit() to recognize the digit. This function takes the image as input and then uses the trained model to predict the digit. The predicted label and its probability percentage are displayed.
 #### Instructions for GUI:
 1. Start by drawing a digit in the canvas window (60 x 60 pixels).
-<img src="gui1.png"/>
+<img src="fig/gui1.png"/>
 
 2. Press “Recognise” and see the predicted class and its probability.
-<img src="gui2.png"/>
+<img src="fig/gui2.png"/>
 
 3. If classified correctly, press “Clear” and go to Step 1.
 4. Otherwise, if the handwritten digit is misclassified, press "Fix" button to add the image to train set, which will be concatenated with the MNIST data before next training cycle.
 5. Type in correct label and press "Get label" button to add the label to train set.
-<img src="gui4_label.png"/>
+<img src="fig/gui4_label.png"/>
 
 6. Press "Save corrections" button to save manually labelled images and labels, and clean memory.
 7. Current accuracy % of recognizing hand-written digits is displayed on the bottom right.
@@ -75,38 +75,38 @@ The following <b>hyperparameters</b> were optimized:
 
 Testing a few values of $n_{2}$ using GUI shows that the optimal number of neurons in layer 2 is between 25 and 75, unless there are several maxima in accuracy.
 
-<img src="accuracyH.nn_50_d0_50_ml0_e200.neurons.png"/>
+<img src="fig/accuracyH.nn_50_d0_50_ml0_e200.neurons.png"/>
 
 The effect of dropout after first layer is negative: accuracy decreases for the three tested values dropout = {0.2, 0.5, 0.8}.
-<img src="accuracy.nn_50_50_ml0_e200.dropout.png"/>
+<img src="fig/accuracy.nn_50_50_ml0_e200.dropout.png"/>
 
 Longer training of NN (epochs = 400) led to overfitting: accuracy has dropped from 0.694 down to 0.588.
-<img src="accuracy.nn_50_d0_50_ml0_e200_400.epochs.png"/>
+<img src="fig/accuracy.nn_50_d0_50_ml0_e200_400.epochs.png"/>
 
 The highest accuracy was achieved by adding manually labeled images and re-training the model with these data added to the MNIST database. The more data added, the higher the accuracy is. However, there is no difference in accuracy between 400 and 600 manual labels added, since all 200 additional labels were generated during testing of lower-accuracy models, and not the model with 400 manual labels. The number of added labeled images is indicated in the legend following the ‘ml’. Same situation with no useful labels added to 800 manual labels among extra 200 labels leads to a slight degradation in accuracy, which drops from 0.966 for 800 manual labels down to 0.934 (after 500 trials).
-<img src="accuracy.nn_50_d0_50_ml0_200-1200.retraining.png"/>
+<img src="fig/accuracy.nn_50_d0_50_ml0_200-1200.retraining.png"/>
 
   It was observed that test accuracy and loss are not reliable metrics of actual performance due to the lack of association with the actual accuracy. As an example, after adding 200 manually labeled images, test accuracy has slightly decreased (from 0.9752 to 0.9741), while the actual performance of digit recognition of the images drawn in the GUI window has strongly increased.
 
 ### CNN models
 Training CNN model longer (400 epochs) did not lead to a change in accuracy of recognizing images hand-written in the GUI, which stayed at 0.55 (after 200 trials).
 
-<img src="accuracy.cnn_32_64_d0.25_ml0_e200_400.training.png"/>
+<img src="fig/accuracy.cnn_32_64_d0.25_ml0_e200_400.training.png"/>
 
   Different loss functions were tested, including user-defined mean absolute error function. Some improvement in accuracy was achieved, as measured after 200 trials. The ranking of the loss functions together with corresponding accuracies is: ‘categorical_crossentropy’ (0.55), ‘mean_absolute_error’ (0.585), and ‘mean_squared_error’ (0.62).
 
-<img src="accuracy.cnn_32_64_d0.25_ml0_e200.loss.png"/>
+<img src="fig/accuracy.cnn_32_64_d0.25_ml0_e200.loss.png"/>
 
   When testing optimizers, it was found that ‘Adam’ gives much higher accuracy of 0.83 than ‘Adadelta’ with the accuracy of 0.55. Other optimizers have accuracy values between the above two, except for ‘Ftrl’ optimizer, which could not train within 200 epochs and always predicted digit 1, and thus had an accuracy of 0.1.
 
-<img src="accuracy.cnn_32_64_d0.25_ml0_e200.optimizer.png"/>
+<img src="fig/accuracy.cnn_32_64_d0.25_ml0_e200.optimizer.png"/>
 
-<img src="cm.cnn_cce_Adam_32_64_d0.25.ml0.e200.png"/>
+<img src="fig/cm.cnn_cce_Adam_32_64_d0.25.ml0.e200.png"/>
 
 ## Kaggle competition "Digit Recognizer"
 Accuracy of the CNN models was also tested using 28000 [Kaggle test images](https://www.kaggle.com/competitions/digit-recognizer/). Specifically, the effect of the duration of training (number of epochs) was studied, as shown below.
 
-<img src="accuracy_kaggle.cnn_48_96_d0.25_48_ml1600_kl42000.epochs.png"/>
+<img src="fig/accuracy_kaggle.cnn_48_96_d0.25_48_ml1600_kl42000.epochs.png"/>
 
 The highest accuracy is 0.999286, achieved using 26 training epochs. This means 20 misclassified images out of total 28000. The loss function is categorical crossentropy, and the optimizer is Adam.
 
