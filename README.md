@@ -124,7 +124,9 @@ lower than for 200 epochs when not using manual labels.
 5. Dropout between the first two layers of NN model lowers the accuracy.
 
 <b>Recommendation 3:</b> Avoid using dropout after the first layer in NN model.
+
 <b>Recommendation 4:</b> First focus on hyperparameters of NN model, which is much faster to train than CNN model. However, keep training the CNN models in the background.
+
 <b>Recommendation 5:</b> When adding more manual labels, generate them using the model that is being upgraded, and not some other lower-accuracy model.
  
  ## Future Directions
