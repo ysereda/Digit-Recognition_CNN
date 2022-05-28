@@ -87,4 +87,12 @@ The highest accuracy was achieved by adding manually labeled images and re-train
 
 <img src="accuracy.nn_50_d0_50_ml0_200-1200.retraining.png"/>
 
+  It was observed that test accuracy and loss are not reliable metrics of actual performance due to the lack of association with the actual accuracy. As an example, after adding 200 manually labeled images, test accuracy has slightly decreased (from 0.9752 to 0.9741), while the actual performance of digit recognition of the images drawn in the GUI window has strongly increased.
+
+### CNN models
+Training CNN model longer (400 epochs) did not lead to a change in accuracy of recognizing images hand-written in the GUI, which stayed at 0.55 (after 200 trials).
+
+<img src="accuracy.cnn_32_64_d0.25_ml0_e200_400.training.png"/>
+
+
 <img src="?"/>
